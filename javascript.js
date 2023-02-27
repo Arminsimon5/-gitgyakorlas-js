@@ -1,21 +1,23 @@
+const lista = [];
+const max = 0;
 document.addEventListener("DOMContentLoaded", () => {
-    document.getElementById("button").addEventListener("click", function(){
+    document.getElementById("hozzaAd").addEventListener("click", function(){
         const input1 = document.getElementById("input1").value;
-        const input2 = document.getElementById("input2").value;
-        const visszaJelzes = document.getElementById("visszaJelzes")
-        visszaJelzes.innerHTML = nagyobb(input1,input2)
+        lista.push(input1)     
+    });
+    document.getElementById("kiIr").addEventListener("click", function(){
+        document.getElementById("visszaJelzes").innerHTML = "A legnagyobb szám a felsorolásból: "+nagyobb(lista,max)
+    });
+});
 
-}) 
-})
-
-function nagyobb(egesz1,egesz2) {
-    if (egesz1>egesz2) {
-        return "Az első szám nagyobb: "+egesz1
+function nagyobb(lista, max) {
+    max = 0
+    for (let index = 0; index < lista.length; index++) {
+        const element = lista[index];
+        if (element>max) {
+            max = element
+        }
     }
-    else if (egesz1<egesz2) {
-        return "Az második szám nagyobb: "+egesz2
-    }
-    else {
-        return "A két szám egyenlő."
-    }
+    return max
 }
+
